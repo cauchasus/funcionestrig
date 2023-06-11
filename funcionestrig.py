@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+import matplotlib.ticker as ticker
 
 pi = math.pi
 
@@ -81,24 +82,38 @@ def enterSinCos():
         
 def graph():
     if eleccionsoc in sini:
-        x = np.linspace(0, 2*np.pi, 100)
+        #x = np.linspace(0, 2*np.pi, 100)
+        x = np.linspace(-2*np.pi, 2*np.pi, 100)
         y = a*np.sin(b*x - c*np.pi) + D
         
         plt.plot(x, y)
         plt.xlabel('x')
         plt.ylabel('y')
         plt.grid(True)
+        
+        plt.gca().xaxis.set_major_formatter(
+            ticker.FuncFormatter(lambda x, pos: f"{x / np.pi:.2f}π"))
+        
         plt.show()
+        
+
     elif eleccionsoc in cosi:
-        x = np.linspace(0, 2*np.pi, 100)
+        #x = np.linspace(0, 2*np.pi, 100)
+        x = np.linspace(-2*np.pi, 2*np.pi, 100)
         y = a*np.cos(b*x - c*np.pi) + D
+        
         
         plt.plot(x, y)
         plt.xlabel('x')
         plt.ylabel('y')
         plt.grid(True)
+        
+        plt.gca().xaxis.set_major_formatter(
+            ticker.FuncFormatter(lambda x, pos: f"{x / np.pi:.2f}π"))
+        
         plt.show()
-    
+
+
     
 
 main()
